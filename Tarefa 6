@@ -1,0 +1,94 @@
+6)#include <stdio.h>
+
+void somaMatrizes(int n, int m, int A[n][m], int B[n][m], int C[n][m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+}
+
+void preencherMatriz(int n, int m, int matriz[n][m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+}
+
+int main() {
+    int n, m;
+
+    printf("Insira o número de linhas e colunas das matrizes: ");
+    scanf("%d %d", &n, &m);
+
+    int A[n][m];
+    int B[n][m];
+    int C[n][m];
+
+    printf("Preencha a matriz A:\n");
+    preencherMatriz(n, m, A);
+
+    printf("Preencha a matriz B:\n");
+    preencherMatriz(n, m, B);
+
+    somaMatrizes(n, m, A, B, C);
+
+    printf("Matriz C (resultado da soma):\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+7)#include <stdio.h>
+
+void multiplicaMatrizes(int n, int m, int p, int A[n][m], int B[m][p], int C[n][p]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < m; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void preencheMatriz(int n, int m, int matriz[n][m], char nomeDaMatriz) {
+    printf("Preencha a matriz %c:\n", nomeDaMatriz);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+}
+
+int main() {
+    int n, m, p;
+
+    printf("Insira as dimensões n, m e p das matrizes: ");
+    scanf("%d %d %d", &n, &m, &p);
+
+    int A[n][m]; 
+    int B[m][p]; 
+    int C[n][p]; 
+
+   
+    preencheMatriz(n, m, A, 'A');
+    preencheMatriz(m, p, B, 'B');
+
+    multiplicaMatrizes(n, m, p, A, B, C);
+
+    printf("Matriz C (resultado da multiplicação):\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
